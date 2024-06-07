@@ -100,6 +100,5 @@ export function createFiber(vnode: VNode | string, returnFiber: Fiber): Fiber {
   } else {
     fiber.tag = Fragment
   }
-  console.log(fiber, 'fibers');
   return fiber;
 }

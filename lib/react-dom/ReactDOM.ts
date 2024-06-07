@@ -1,4 +1,5 @@
 import { VNode, createFiber } from "../reconciler/ReactFiber";
+import scheduleUpdateOnFiber from '../reconciler/ReactFiberWorkLoop';
 import { FiberFlags, isNumber } from "../shared/utils";
 
 function formatElement(element: Exclude<React.ReactNode, undefined | null>) {
@@ -26,15 +27,13 @@ function updateContainer(element: React.ReactNode, container: HTMLElement) {
   scheduleUpdateOnFiber(fiber);
 }
 
-
-
 class ReactRootDOM {
   private _internalRoot: HTMLElement;
   constructor(container: HTMLElement) {
     this._internalRoot = container;
   }
   render(children: React.ReactNode) {
-    console.log(children, 'ccc')
+    console.log(children)
     updateContainer(children, this._internalRoot);
   }
 }

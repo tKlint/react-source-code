@@ -45,6 +45,6 @@ export function isNumber(target: unknown): target is number {
 }
 
 export abstract class ReactComponent {
-  isReactComponent: boolean
+  isReactComponent: boolean = true;
 }
 

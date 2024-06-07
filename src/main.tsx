@@ -18,5 +18,11 @@
 import ReactDOM from '../lib/react-dom/ReactDOM'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <div>222</div>
+  <div>
+    <p>
+      <span>232</span>
+      <span>232</span>
+    </p>
+    <div>222</div>
+  </div>
 )
