@@ -2,7 +2,7 @@ import { FiberFlags, ReactComponent, isFunction, isString, isUndefined } from ".
 import { ClassComponent, Fragment, FunctionComponent, HostComponent, HostText } from './ReactWorkTags';
 
 export type FiberProps = Record<string, unknown> & {
-  children?: Fiber | Fiber[]
+  children?: Fiber | Fiber[] | string
 };
 
 export interface Fiber {
@@ -74,7 +74,7 @@ export function createFiber(vnode: VNode | string, returnFiber: Fiber): Fiber {
   const fiber: Fiber = {
     type: !isStringNode ? vnode.type : void 0,
     key: !isStringNode ? vnode.key : void 0,
-    props: !isStringNode ? vnode.props : void 0,
+    props: !isStringNode ? vnode.props as Fiber['props'] : void 0,
     stateNode: null,
     child: null,
     sibling: null,
@@ -97,7 +97,7 @@ export function createFiber(vnode: VNode | string, returnFiber: Fiber): Fiber {
     // 文本节点
     fiber.tag = HostText;
     fiber.props = {
-      children: vnode,
+      children: vnode as string,
     };
   } else {
     fiber.tag = Fragment
