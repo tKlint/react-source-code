@@ -33,7 +33,6 @@ class ReactRootDOM {
     this._internalRoot = container;
   }
   render(children: React.ReactNode) {
-    console.log(children)
     updateContainer(children, this._internalRoot);
   }
 }

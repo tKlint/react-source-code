@@ -1,12 +1,14 @@
 import { FiberFlags, ReactComponent, isFunction, isString, isUndefined } from "../shared/utils";
 import { ClassComponent, Fragment, FunctionComponent, HostComponent, HostText } from './ReactWorkTags';
 
-type FiberProps = Record<string, unknown>;
+export type FiberProps = Record<string, unknown> & {
+  children?: Fiber | Fiber[]
+};
 
 export interface Fiber {
   /**
    * fiber的类型
-   * @description div component...
+   * @description div p component...
    */
   type?: string | FC | ReactComponent;
   /**
@@ -20,7 +22,7 @@ export interface Fiber {
   /**
    * 当前fiber对应的真实DOM节点
    */
-  stateNode: HTMLElement | null,
+  stateNode: HTMLElement | null | Text,
   /**
    * 子fiber
    */

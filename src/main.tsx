@@ -3,9 +3,6 @@
 // import App from './App.tsx'
 // import './index.css'
 
-
-
-
 // ReactDOM.createRoot(document.getElementById('root')!).render(
 //   <React.StrictMode>
 //     <App />
@@ -13,12 +10,12 @@
 // )
 
 
-// ReactDOM.createRoot(document.getElementById('root')!).render('2')
+import ReactDOM2 from '../lib/react-dom/ReactDOM'
 
-import ReactDOM from '../lib/react-dom/ReactDOM'
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <div>
+ReactDOM2.createRoot(document.getElementById('root')!).render(
+  <div className="hello" onClick={() => {
+    console.log('222')
+  }}>
     <p>
       <span>232</span>
       <span>232</span>

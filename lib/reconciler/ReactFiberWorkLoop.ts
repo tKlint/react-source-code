@@ -1,4 +1,5 @@
 import { Fiber } from "./ReactFiber";
+import beginWork from "./ReactFiberBeginWork";
 
 let wip:Fiber | null = null;
 let wipRoot:Fiber | null = null;
@@ -15,9 +16,6 @@ export default function scheduleUpdateOnFiber(fiber: Fiber) {
 }
 
 
-function beginWork(fiber: Fiber) {
-  console.log('beginWork', fiber);
-}
 
 function completeWork(fiber: Fiber) {
   console.log('complate fiber', fiber)
@@ -31,8 +29,6 @@ function completeWork(fiber: Fiber) {
  * @description 渲染
  */
 function performUnitOfWork() {
-  // debugger;
-  console.count('performUnitOfWork')
   beginWork(wip!);
   if(wip?.child) {
     wip = wip.child;
@@ -54,7 +50,6 @@ function performUnitOfWork() {
 }
 
 function workloop(deadline: IdleDeadline){
-  console.count('workloop')
   while (wip && deadline.timeRemaining() > 0) {
     performUnitOfWork()
   }
