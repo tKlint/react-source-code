@@ -1,8 +1,11 @@
 import { Fiber } from "./ReactFiber";
 import beginWork from "./ReactFiberBeginWork";
+import commitWork from './ReactFiberCommit'
+import completeWork from './ReactFiberCompleteWork'
 
 let wip:Fiber | null = null;
 let wipRoot:Fiber | null = null;
+
 
 /**
  * 调度fiber更新
@@ -13,12 +16,6 @@ export default function scheduleUpdateOnFiber(fiber: Fiber) {
   wipRoot = fiber;
 
   requestIdleCallback(workloop)
-}
-
-
-
-function completeWork(fiber: Fiber) {
-  console.log('complate fiber', fiber)
 }
 
 /**
@@ -59,6 +56,12 @@ function workloop(deadline: IdleDeadline){
 }
 
 
+/**
+ * 协调完成
+ * Fiber 链表结构已经生成
+ * 开始渲染
+ */
 function commitRoot() {
-  console.log(wipRoot);
+  commitWork(wipRoot);
+  wipRoot = null;
 }

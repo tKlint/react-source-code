@@ -10,16 +10,22 @@
 // )
 
 
+import React from 'react'
 import ReactDOM2 from '../lib/react-dom/ReactDOM'
+import App from './App'
+import Home from './Home'
 
 ReactDOM2.createRoot(document.getElementById('root')!).render(
-  <div className="hello" onClick={() => {
-    console.log('222')
-  }}>
-    <p>
-      <span>232</span>
-      <span>232</span>
-    </p>
-    <div>222</div>
+  <div>
+    <h1>虚拟DOM渲染</h1>
+    <ul>
+      <li>1</li>
+      <li>1</li>
+      <li>1</li>
+      <li>1</li>
+      <li>1</li>
+    </ul>
+    <App message="Hello mini React" />
+    <Home message="This is a Class Componet" />
   </div>
 )

@@ -1,5 +1,5 @@
 import { Fiber } from "./ReactFiber";
-import { updateHostComponent, updateHostText } from './ReactFiberReconciler'
+import { updateClassComponet, updateFunctionComponent, updateHostComponent, updateHostText } from './ReactFiberReconciler'
 import { ClassComponent, FunctionComponent, HostComponent, HostText } from "./ReactWorkTags";
 
 function beginWork(wip:Fiber){
@@ -9,8 +9,10 @@ function beginWork(wip:Fiber){
       updateHostComponent(wip);
       break;
     case FunctionComponent:
+      updateFunctionComponent(wip);
       break
     case ClassComponent:
+      updateClassComponet(wip)
       break;
     case HostText:
       updateHostText(wip);
@@ -18,8 +20,6 @@ function beginWork(wip:Fiber){
     default:
       break;
   }
-  console.log(wip)
-
 }
 
 export default beginWork;

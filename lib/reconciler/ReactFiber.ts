@@ -47,7 +47,7 @@ export interface Fiber {
   /**
    * 旧的fiber对象
    */ 
-  alternate: null,
+  alternate: Fiber | null,
   /**
    * fiber的标签类型 RFC, RCC, HTML ELEMENT等
    */
@@ -56,7 +56,7 @@ export interface Fiber {
 
 export const reactElement = Symbol('react.element')
 
-type FC = (...args: unknown[]) => JSX.Element;
+export type FC = (...args: unknown[]) => JSX.Element;
 
 
 
