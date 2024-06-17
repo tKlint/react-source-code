@@ -1,4 +1,4 @@
-import { ReactComponent, isString, updateNode } from "../shared/utils";
+import { isString, updateNode } from "../shared/utils";
 import { FC, Fiber } from "./ReactFiber";
 import { reconcilerChildren } from './ReactChildFiber'
 import { ClassComponet, ComponentConstructor } from "../react/React";
@@ -20,7 +20,7 @@ export function updateHostText(wip: Fiber) {
 export function updateFunctionComponent(wip: Fiber) {
   if  (!wip.type) return;
   const children = (wip.type as FC)(wip.props)
-  reconcilerChildren(wip, children as Fiber)    ;
+  reconcilerChildren(wip, children as Fiber);
 }
 
 

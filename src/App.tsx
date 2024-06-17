@@ -1,5 +1,4 @@
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 type Props = {
@@ -9,8 +8,8 @@ function App(props: Props) {
 
   return (
     <div>
+      <input />
       <img src={reactLogo} alt="" />
-      <img src={viteLogo} alt="" />
       <p>{props.message}</p>
     </div>
   )

@@ -9,8 +9,6 @@
 //   </React.StrictMode>,
 // )
 
-
-import React from 'react'
 import ReactDOM2 from '../lib/react-dom/ReactDOM'
 import App from './App'
 import Home from './Home'
@@ -20,8 +18,8 @@ ReactDOM2.createRoot(document.getElementById('root')!).render(
     <h1>虚拟DOM渲染</h1>
     <ul>
       <li>1</li>
-      <li>1</li>
-      <li>1</li>
+      <li>2</li>
+      <li>3</li>
       <li>1</li>
       <li>1</li>
     </ul>
