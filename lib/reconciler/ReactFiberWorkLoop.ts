@@ -2,6 +2,7 @@ import { Fiber } from "./ReactFiber";
 import beginWork from "./ReactFiberBeginWork";
 import commitWork from './ReactFiberCommit'
 import completeWork from './ReactFiberCompleteWork'
+import scheduleCallback from '../scheduler/Scheduler'
 
 let wip:Fiber | null = null;
 let wipRoot:Fiber | null = null;
@@ -15,7 +16,9 @@ export default function scheduleUpdateOnFiber(fiber: Fiber) {
   wip = fiber;
   wipRoot = fiber;
 
-  requestIdleCallback(workloop)
+  // requestIdleCallback(workloop)
+
+  scheduleCallback(workloop)
 }
 
 /**
@@ -46,14 +49,27 @@ function performUnitOfWork() {
   wip = null;
 }
 
-function workloop(deadline: IdleDeadline){
-  while (wip && deadline.timeRemaining() > 0) {
-    performUnitOfWork()
+// function workloop(deadline: IdleDeadline){
+//   while (wip && deadline.timeRemaining() > 0) {
+//     // const expirationTime = currentTime + timeout;
+//     performUnitOfWork()
+//   }
+//   if (!wip) {
+//     commitRoot()
+//   }
+// }
+
+
+function workloop(time: number){
+  while (wip) {
+    if (time < 0) return false;
+    performUnitOfWork(); // 该方法负责处理一个 fiber 节点
   }
-  if (!wip) {
-    commitRoot()
+  if (!wip && wipRoot) {
+    commitRoot();
   }
 }
+
 
 
 /**

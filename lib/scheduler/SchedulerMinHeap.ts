@@ -2,7 +2,7 @@
  * 该文件为最小堆的实现
  */
 
-type Node = {
+export type Node = {
   id: number;
   sortIndex: number;
   [k: string]: unknown;
@@ -13,7 +13,7 @@ type Node = {
  * 返回任务队列的第一个任务
  * @param {*} heap 任务队列
  */
-export function peek(heap: Node[]) {
+export function peek<T>(heap: T[]): T | null {
   return heap.length === 0 ? null : heap[0];
 }
 

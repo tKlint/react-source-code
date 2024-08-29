@@ -1,0 +1,43 @@
+.card-container {
+  position: relative;
+  height: var(--h);
+}
+.hasChild {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: var(--lineW);
+    height: 1px;
+    left: 100%;
+    background-color: rgb(173, 165, 205);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.hasParent::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: var(--lineW);
+  height: 1px;
+  right: 100%;
+  background-color: rgb(173, 165, 205);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.group-wrap-has-children {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 1px;
+    bottom: calc(var(--groupBotton) + calc(var(--h) / 2));
+    background-color: rgb(173, 165, 205);
+    left: calc(100% + var(--gapX) / 2);
+    top: calc(var(--h) / 2);
+}
+}
+.group-wrap-has-children {
+  position: relative;
+}

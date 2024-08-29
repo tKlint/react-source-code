@@ -99,4 +99,6 @@ export function updateNode(node:HTMLElement,prevValue: FiberProps, nextValue: Fi
 
   })
 }
-
+export function getCurrentTime() {
+  return performance.now();
+}
